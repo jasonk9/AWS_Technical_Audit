@@ -1,0 +1,13 @@
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.zip
+
+*.test
+*.out
+.env
+
+[0-9]*/
+AWSAUdit*
