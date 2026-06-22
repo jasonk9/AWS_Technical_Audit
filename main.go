@@ -17,13 +17,6 @@ func main() {
 	tokenName := flag.String("tokenName", "token_github_awsaudit", "Token to fetch for github auth")
 	flag.Parse()
 
-	//fmt.Println("Owner: ", *owner)
-	//fmt.Println("Repo: ", *repo)
-	//fmt.Println("File: ", *accountsFile)
-	//fmt.Println("Token: ", *tokenName)
-
-	//os.Exit(0)
-
 	accounts, err := GetAccountsFromGithub(*owner, *repo, *accountsFile, *tokenName)
 	//accounts, err := LoadAccountsFromGithub()
 	if err != nil {
@@ -102,10 +95,6 @@ func main() {
 						log.Fatal(err)
 					}
 
-					//var groupStr strings.Builder
-					//var groupInlineStr strings.Builder
-					//var groupAttachedStr strings.Builder
-
 					if len(groupMemberships.Groups) > 0 {
 						//GROUPS:
 						var g GroupData
@@ -141,17 +130,9 @@ func main() {
 							}
 							report.Groups = append(report.Groups, g)
 						}
-					} else {
-						//var groupStr strings.Builder
-						//var groupAttachedStr strings.Builder
-						//var groupInlineStr strings.Builder
-						//groupStr.WriteString("None")
-						//groupAttachedStr.WriteString("None")
-						//groupInlineStr.WriteString("None")
-						//report.Groups = groupStr.String()
-
 					}
 					writeToCSV(report, &account)
+					report = UserData{}
 				}
 
 			}
